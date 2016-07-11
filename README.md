@@ -2,5 +2,5 @@
 Marketplace demo, versión semanal para la construcción de un marketplace por pasos, desde html hasta Symfony.
 ## Semana 2
 * 11 de Julio a 15 de Julio 2016
-* repositorio con GitHub
-* Etiquetas HTML, atributos CSS, Elementos Bootstrap
+* Trabajo con repositorio de Git Hub
+* Renombrar archivos de html a php y enviar a GIT
