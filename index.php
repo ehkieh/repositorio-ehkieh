@@ -38,6 +38,19 @@
 
 
 </head>
+
+        <?php
+            // Voy a establecer el horario en mis sistema en PHP a Europa/Madrid
+            date_default_timezone_set('Europe/Madrid');
+            
+            //Ahora voy a pedir al al sistema el año en el que estamos con la funcion date
+            $year = date("Y");
+            
+            // Hemos puesto una variable que es igual a una cadena de caracteres
+            $nuestraCadena = "hola mundo"
+            
+        ?>
+
 <body>
 
 <div id="wrapper">
@@ -69,7 +82,7 @@
 
                     <p class="sub animateme fittext3 animated fadeIn"> Ahorra combustible y haz amigos en la plataforma de Comparte Tu Coche </p>
 
-                    <form name="search" action="list.html" method="GET">
+                    <form name="search" action="list.php" method="GET">
                         <div class="row search-row animated fadeInUp">
                             <div class="col-lg-6 col-sm-6 search-col relative locationicon">
                                 <i class="icon-location-2 icon-append"></i>
@@ -95,6 +108,7 @@
 
     <div class="main-container">
         <div class="container">
+            
             <div class="row">
                 <div class="col-sm-12 page-content col-thin-right">
                     <div class="inner-box category-content">
@@ -191,7 +205,7 @@
     <div class="footer" id="footer">
         <div class="container">
             <ul class=" pull-right navbar-link footer-nav">
-                <li> &copy; 2016 - development by Sopinet Software</li>
+                <li> &copy; <?php echo $year;?> - development by Ehkieh</li>
             </ul>
         </div>
     </div>

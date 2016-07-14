@@ -36,61 +36,81 @@
     </script>
     <script src="assets/js/pace.min.js"></script>
     
-                                <?php
-                        
+</head>
+
+                            <?php
+                                        // 1. Declarar variable con el contenido completo de la frase "Un viaje..."
+                                        // 2. Recortar la variable , substr, para que solo tenga 80 primeros caracteres
+                                        // 3. Mostrar la variable y despues mostrar 3 puntos suspensivos
+                                        // 4. Mostrar el resultado
+                                        
+                                        $frase = "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.";
+                                        $frasecortada = substr($frase,0,80);
+                                        $frasecortada = $frasecortada . "...";
+                                       
                             
                             $user1 = array(
                                 
                                 'nombre' => "Antonio Luque",
-                                'trayecto' => "Cordoba a Huelva",
+                                'origen' => "Córdoba",
+                                'destino' => "Huelva",
                                 'direccion' => "Poeta Paredes 25",
                                 'hora' => "9:00",
                                 'precio' => "15",
-                                'plazas' => "2"
+                                'plazas' => "2",
+                                'avatar' => "images/users/1.jpg"
 
                                 );
                             
                             $user2 = array (
                                 
                                 'nombre' => "Francisco Molina",
-                                'trayecto' => "Cordoba a Sevilla",
+                                'origen' => "Sevilla",
+                                'destino' => "Cadiz",
                                 'direccion' => "Medina Azahara 32",
                                 'hora' => "14:00",
                                 'precio' => "5",
-                                'plazas' => "1"
+                                'plazas' => "1",
+                                'avatar' => "images/users/2.jpg"
                                 
                                 );
                                 
                             $user3 = array (
                                 
                                 'nombre' => "Javier Garcia",
-                                'trayecto' => "Cordoba a Cadiz",
+                                'origen' => "Córdoba",
+                                'destino' => "Sevilla",
                                 'direccion' => "Cañada Real Mestas 15",
                                 'hora' => "18:00",
                                 'precio' => "7",
-                                'plazas' => "3"
+                                'plazas' => "3",
+                                'avatar' => "images/users/3.jpg"
                                 
                                 );
                                 
                             $user4 = array(
                                 
                                 'nombre' => "Fernando Navarro",
-                                'trayecto' => "Cordoba a Jaen",
+                                'origen' => "Málaga",
+                                'destino' => "Cadiz",
                                 'direccion' => "Gran Via Parque 64",
                                 'hora' => "21:00",
                                 'precio' => "8",
-                                'plazas' => "4"
+                                'plazas' => "4",
+                                'avatar' => "images/users/4.jpg"
                                                                 
                                 );
                                 
                             $user5 = array(
                                 
                                 'nombre' => "Jesus Gomez",
-                                'trayecto' => "Cordoba a Malaga",
+                                'origen' => "Sevilla",
+                                'destino' => "Málaga",
                                 'direccion' => "Arroyo del Moro 72",
                                 'hora' => "19:00",
                                 'precio' => "20",
-                                'plazas' => "2"
+                                'plazas' => "2",
+                                'avatar' => "images/users/5.jpg"
                                 
                                 );    
                             
@@ -104,10 +124,22 @@
                                 
                                 );
 
-                                ?>
-    
-    
-</head>
+                            for($i=0; $i<count($trayectos); $i= $i +1) {
+                                
+                                $a = $trayectos[$i]["origen"];
+                                $b= $_GET["country"];
+                                $c = $trayectos[$i]["destino"];
+ 
+                                
+                                
+                                if($a==$b or $c==$b) {
+                                    $trayectosFinal[] = $trayectos[$i];
+                                    }
+                                    
+                                    }
+
+                            ?>
+
 <body>
 <div id="wrapper">
     <div class="header">
@@ -132,17 +164,18 @@
     <div class="search-row-wrapper"
          style="background-image: url(images/jobs/ibg.jpg); background-size: cover; background-position: center center;">
         <div class="container text-center">
+            <form name="sear" action="list.php" method="GET">
             <div class="col-sm-3 col-sm-offset-3">
-                <select class="form-control" name="category" id="search-category">
-                    <option selected="selected" value="">Localidad</option>
-                    <option value="111">Huelva</option>
-                    <option value="111">Cordoba</option>
-                    <option value="111">Sevilla</option>
-                </select>    
+                
+                                <i class="icon-location-2 icon-append"></i>
+                                <input type="text" name="country" id="autocomplete-ajax"
+                                       class="form-control locinput input-rel searchtag-input has-icon"
+                                       placeholder="Origen o Destino..." value="">
             </div>
             <div class="col-sm-3">
-                <button class="btn btn-block btn-primary"> Buscar trayectos <i class="fa fa-search"></i></button>
+                <button type= "submit" class="btn btn-block btn-primary"> Buscar trayectos <i class="fa fa-search"></i></button>
             </div>
+            </form>   
         </div>
     </div>    
 
@@ -192,47 +225,35 @@
                             <div class="col-lg-12  box-title no-border">
                                 <div class="inner">
                                     <h2><span> Trayectos </span> publicados
-                                        <small> <?php echo count($trayectos); ?> resultados encontrados</small>
+                                        <small> <?php echo count($trayectosFinal); ?> resultados encontrados</small>
                                     </h2>
                                 </div>
                             </div>
                             
-                                            <?php
-                                                for ($i = 0; $i < count($trayectos); $i= $i + 1) 
-                    
-                                                    {
-                                            ?>
-                            
                         <div class="adds-wrapper jobs-list">
                             
+                                <?php
+                                    for ($i = 0; $i < count($trayectosFinal); $i= $i + 1) 
+        
+                                        {
+                                ?>
+                
                             <div class="item-list job-item">
 
                                 <div class="col-sm-1  col-xs-2 no-padding photobox">
                                     <div class="add-image"><a href=""><img class="thumbnail no-margin"
-                                                                           src="https://addons.cdn.mozilla.net/user-media/userpics/0/0/45.png?modified=1447324257"
+                                                                           src= "<?php echo $trayectosFinal[$i]['avatar'];?>"
                                                                            alt="Avatar de Usuario"></a></div>
                                 </div>
                                 <!--/.photobox-->
                                 <div class="col-sm-10  col-xs-10  add-desc-box">
                                         <div class="add-details jobs-item">
-                                        <h5 class="company-title"><a href=""><?php echo $trayectos [$i]['nombre'];?></a></h5>
-                                        <h4 class="job-title"><a href="job-details.html"><?php echo $trayectos [$i]['trayecto'];?></a></h4>
+                                        <h5 class="company-title"><a href=""><?php echo $trayectosFinal [$i]['nombre'];?></a></h5>
+                                        <h4 class="job-title"><a href="job-details.html"><?php echo $trayectosFinal [$i]['origen'] . "  a  " . $trayectosFinal[$i]['destino'];?></a></h4>
                                         <span class="info-row">  <span class="item-location"><i
-                                                class="fa fa-map-marker"></i><?php echo $trayectos [$i]['direccion'];?></span> <span class="date"><i
-                                                class=" icon-clock"> </i><?php echo $trayectos [$i]['hora'];?></span><span class=" salary">	<i
-                                                class=" icon-money"> </i> <?php echo $trayectos [$i]['precio'];?></span></span>
-                                    
-                                    <?php
-                                        // 1. Declarar variable con el contenido completo de la frase "Un viaje..."
-                                        // 2. Recortar la variable , substr, para que solo tenga 80 primeros caracteres
-                                        // 3. Mostrar la variable y despues mostrar 3 puntos suspensivos
-                                        // 4. Mostrar el resultado
-                                        
-                                        $frase = "Un viaje entretenido y seguro, no me gusta correr. Además, pararemos a mitad de camino para tomar una rica tostada de sobraasada, y luego, directos a Huelva.";
-                                        $frasecortada = substr($frase,0,80);
-                                        $frasecortada = $frasecortada . "...";
-                                       
-                                    ?>
+                                                class="fa fa-map-marker"></i><?php echo $trayectosFinal [$i]['direccion'];?></span> <span class="date"><i
+                                                class=" icon-clock"> </i><?php echo $trayectosFinal [$i]['hora'];?></span><span class=" salary">	<i
+                                                class=" icon-money"> </i> <?php echo $trayectosFinal [$i]['precio'];?></span></span>
                                         
                                         <div class="jobs-desc">
                                             <?php
@@ -246,7 +267,7 @@
                                                 <li>
                                                     <span class="save-job">
                                                         <span class="fa fa-users"></span>
-                                                        <?php echo $trayectos [$i]['plazas'];?>
+                                                        <?php echo $trayectosFinal [$i]['plazas'];?>
                                                     </span>
                                                 </li>
                                             </ul>
