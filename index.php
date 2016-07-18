@@ -40,6 +40,7 @@
 </head>
 
         <?php
+            // Comentario para guardar index con commit -m
             // Voy a establecer el horario en mis sistema en PHP a Europa/Madrid
             date_default_timezone_set('Europe/Madrid');
             
