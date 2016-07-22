@@ -6,6 +6,10 @@
 
 {% block contenido %}
 
+    {% block css %}
+    {{ parent() }}
+    {% endblock %}
+
     {% block intro %}
             {% include "indexIntro.html.twig" %}
     {% endblock %}
@@ -18,8 +22,18 @@
             {% include "indexInfo.html.twig" %}
     {% endblock %}
     
-      {% block contacto %}
+    {% block contacto %}
             {% include "indexContacto.html.twig" %}
+    {% endblock %}
+  
+    {% block javascript %}
+    {{ parent() }}
+    <!-- AUTOCOMPLETAR DE JAVASCRIPT-->
+        <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
+        <script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.js"></script>
+        <script type="text/javascript" src="curso-assets/js/ciudades.js"></script>
+        
+        <script type="text/javascript" src="assets/plugins/autocomplete/autocomplete-demo.js"></script>
     {% endblock %}
   
 {% endblock %}

@@ -3,6 +3,7 @@
     <div class="container text-center">
         <form name="filter" action="main.php" method="GET">
             <input type="hidden" name="posted" value="{{ posted }}"/>
+            <input type="hidden" name= "page" value="list"/>
             <div class="col-sm-3 col-sm-offset-3">
                 <select class="form-control" name="country" id="country">
                     <option {% if country == "" %} selected="selected" {% endif %} value="">Todas las localidades</option>

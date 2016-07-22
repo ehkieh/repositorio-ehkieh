@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block css %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Fav and touch icons -->
@@ -19,7 +20,8 @@
     <!-- styles needed for carousel slider -->
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.theme.css" rel="stylesheet">
-
+    
+    {% endblock %}
     <!-- Just for debugging purposes. -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -77,7 +79,7 @@
 
 <!-- Le javascript
 ================================================== -->
-
+{% block javascript %}
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 </script>
@@ -101,6 +103,8 @@
 <script src="assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 <!-- include custom script for site  -->
 <script src="assets/js/script.js"></script>
+{% endblock %}
+
 </body>
 </html>
         
