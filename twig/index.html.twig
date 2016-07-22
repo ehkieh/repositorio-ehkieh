@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Comparte Tu Coche - Bienvenido a la plataforma de compartir coche
+{% endblock %}
+
+{% block contenido %}
+
+    {% block intro %}
+            {% include "indexIntro.html.twig" %}
+    {% endblock %}
+    
+    {% block ventajas %}
+            {% include "indexVentajas.html.twig" %}
+    {% endblock %}
+      
+    {% block info %}
+            {% include "indexInfo.html.twig" %}
+    {% endblock %}
+    
+      {% block contacto %}
+            {% include "indexContacto.html.twig" %}
+    {% endblock %}
+  
+{% endblock %}

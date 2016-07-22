@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block contenido %}
+     
+    {% include "list/filtroCiudad.html.twig" %}
+    
+    <div class="main-container inner-page">
+        <div class="container">
+            <div class="row clearfix">
+                
+                <div class="col-sm-3 page-sidebar mobile-filter-sidebar">
+                     {% include "list/filtroFecha.html.twig" %}
+                 </div>
+                 
+                <div class="col-sm-9 page-sidebar mobile-filter-sidebar">
+                     {% include "list/listadoTrayectos.html.twig" %}
+                 </div>
+                 
+            </div>
+        </div>
+    </div>    
+    
+{% endblock %}
