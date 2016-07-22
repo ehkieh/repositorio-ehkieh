@@ -37,72 +37,6 @@
     <script src="assets/js/pace.min.js"></script>
 </head>
 
-<?php
-                /**
-                 * Ejemplo 1: Array de objetos
-                 * Declara un Array de objetos, lo inicializa y lo immprime por pantalla.
-                 ***************************************************************************
-                 
-                class TrayectoSimple {
-                    var $origen;
-                    var $destino;
-                    
-                    function dimeElTrayecto() {
-                        return $this->origen . " a " . $this->destino;
-                    }
-                }
-                
-                $b = new TrayectoSimple();
-                $b->origen = "Huelva";
-                $b->destino = "Córdoba";
-                
-                $a = array();
-                $a[0] = $b;
-                $a[1] = $b;
-                
-                echo '<pre>';
-                var_dump($a);
-                echo '</pre>';
-                
-                die($b->dimeElTrayecto());
-                **/
-                
-                
-
-
-                /** 
-                 * Ejemplo 2: Array bidimensional de enteros
-                 * Declara un Array bidimensional de eneteros, lo inicializa y lo imprime por pantalla.
-                 * ************************************************************************************
-                 
-                $a = array(
-                    array(15,12,7,123,12,32,23,4), // Fila 0
-                    array(103,189,190,6,5,3,12,32), // Fila 1
-                    array(89,45,23,0,-12,23,12,12), // Fila 2
-                    array(1,3,4,5,7,9,0,1), // Fila 3
-                    array(9,30,1,0,90,09,01,12) // Fila 4
-                );
-                
-                // Recorre las filas
-                for ($i = 0; $i < count($a); $i++) {
-                    $b = $a[$i]; // Asignar una nueva variable a una fila de la tabla
-                    
-                    // Recorre las columnas por cada fila
-                    for($j = 0; $j < count($b); $j++) {
-                        
-                        if ($b[$j] == 1) {
-                            echo '<b>' . $b[$j] . '</b>';
-                        } else {
-                            echo $b[$j];
-                        }
-                        
-                        echo ", ";
-                    }
-                    
-                    echo '<br/>';
-                }
-                **/   
-?>
 
 <body>
 <div id="wrapper">
@@ -273,7 +207,7 @@
                     // Recorremos el array original trayectos para buscar los trayectos a filtrar
                     for($i = 0; $i < count($trayectosFiltradosFecha); $i = $i + 1) {
                         // Comienza nuestro bucle                
-                            if ($trayectosFiltradosFecha[$i]->buscar($_GET["country"])) {
+                            if ($trayectosFiltradosFecha[$i]->tieneOrigen($_GET["country"])) {
                                 $trayectosFiltrados[] = $trayectosFiltradosFecha[$i];
                             }
                         // Termina nuestro bucle
